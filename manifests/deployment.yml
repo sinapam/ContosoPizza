@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contoso-pizza-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: contoso-pizza
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: contoso-pizza
+    spec:
+      containers:
+        - name: contoso-pizza-pod
+          image: sinapam/contoso-pizza:latest
+          ports:
+            - containerPort: 8080
