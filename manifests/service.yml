@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: contoso-pizza-svc
   labels:
-    app: hello-world
+    app: contoso-pizza
 spec:
   type: NodePort
   ports:
